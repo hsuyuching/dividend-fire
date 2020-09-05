@@ -6,12 +6,14 @@ import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HoldingstableComponent } from './holdingstable/holdingstable.component';
+import { HoldingstableComponent } from './holdings/holdingstable/holdingstable.component';
+import { HoldingschartComponent } from './holdings/holdingschart/holdingschart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HoldingstableComponent
+    HoldingstableComponent,
+    HoldingschartComponent
   ],
   imports: [
     BrowserModule,
