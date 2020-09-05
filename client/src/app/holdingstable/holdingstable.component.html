@@ -1,0 +1,50 @@
+<h1>{{holdingsNumber()}} Holdings</h1>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="ticker">
+    <th mat-header-cell *matHeaderCellDef> Ticker </th>
+    <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="shares">
+    <th mat-header-cell *matHeaderCellDef> Shares </th>
+    <td mat-cell *matCellDef="let element"> {{element.shares}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> Price </td>
+  </ng-container>
+
+  <ng-container matColumnDef="averagecost">
+    <th mat-header-cell *matHeaderCellDef> Average Cost </th>
+    <td mat-cell *matCellDef="let element"> {{element.averageCost}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="percentofportfolio">
+    <th mat-header-cell *matHeaderCellDef> % of Portfolio </th>
+    <td mat-cell *matCellDef="let element"> % of Portfolio </td>
+  </ng-container>
+
+  <ng-container matColumnDef="gainorloss">
+    <th mat-header-cell *matHeaderCellDef> Gain or Loss </th>
+    <td mat-cell *matCellDef="let element"> Gain or Loss </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dividendyield">
+    <th mat-header-cell *matHeaderCellDef> Dividend Yield </th>
+    <td mat-cell *matCellDef="let element"> Dividend Yield </td>
+  </ng-container>
+
+  <ng-container matColumnDef="annualincome">
+    <th mat-header-cell *matHeaderCellDef> Annual Income </th>
+    <td mat-cell *matCellDef="let element"> Annual Income </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
