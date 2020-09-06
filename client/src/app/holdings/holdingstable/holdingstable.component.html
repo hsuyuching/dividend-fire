@@ -37,7 +37,7 @@
 
   <ng-container matColumnDef="dividendyield">
     <th mat-header-cell *matHeaderCellDef> Dividend Yield </th>
-    <td mat-cell *matCellDef="let element"> Dividend Yield </td>
+    <td mat-cell *matCellDef="let element"> {{element.dividendyield * 100 | number:'1.2-2'}} {{'%'}}</td>
   </ng-container>
 
   <ng-container matColumnDef="annualincome">

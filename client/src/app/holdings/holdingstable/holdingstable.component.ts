@@ -7,12 +7,14 @@ import { HoldingsService, Holdings } from './../holdings.service';
   styleUrls: ['./holdingstable.component.scss']
 })
 export class HoldingstableComponent implements OnInit {
-
   displayedColumns: string[] = ['ticker', 'shares', 'price', 'averagecost', 'percentofportfolio', 'gainorloss', 'dividendyield', 'annualincome'];
   holdingsSource: Holdings[];
 
   constructor(private holdingsService: HoldingsService) {
     this.holdingsSource = holdingsService.getHoldings();
+    for (let holding of this.holdingsSource) {
+      this.holdingsService.getStockInfo(holding.ticker)
+    }
   }
 
   ngOnInit(): void {
