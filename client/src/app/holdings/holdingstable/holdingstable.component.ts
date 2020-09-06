@@ -7,7 +7,7 @@ import { HoldingsService, Holdings } from './../holdings.service';
   styleUrls: ['./holdingstable.component.scss']
 })
 export class HoldingstableComponent implements OnInit {
-  displayedColumns: string[] = ['ticker', 'shares', 'price', 'averagecost', 'percentofportfolio', 'gainorloss', 'dividendyield', 'annualincome'];
+  displayedColumns: string[] = ['ticker', 'shares', 'price', 'totalvalue', 'averagecost', 'percentofportfolio', 'gainorloss', 'dividendyield', 'annualincome'];
   holdingsSource: Holdings[];
 
   constructor(private holdingsService: HoldingsService) {
@@ -23,5 +23,4 @@ export class HoldingstableComponent implements OnInit {
   public getHoldingsNumber(): number {
     return this.holdingsService.getHoldingsNumber();
   }
-
 }
