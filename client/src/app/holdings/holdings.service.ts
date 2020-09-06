@@ -41,9 +41,13 @@ export class HoldingsService {
       const found = this.holdings.find(e => e.ticker == ticker);
       found.dividendyield = res.DividendYield
     })
-    this.http.get(stockPrice).subscribe(res => {
+
+    // const APIKey2 = '7bddb22f28d4688052e6f6f0191a60d9ae193973'
+    // const stockPrice2 = `https://api.tiingo.com/tiingo/daily/${ticker}/prices?token=${APIKey2}`
+    const stockPrice2 = `http://localhost:3000/stock/${ticker}`;
+    this.http.get(stockPrice2).subscribe(res => {
       const found = this.holdings.find(e => e.ticker == ticker);
-      found.price = res['Time Series (Daily)']['2020-09-04']["4. close"]
+      found.price = res[0]['close']
       found.totalvalue = found.shares*found.price
     })
   }
