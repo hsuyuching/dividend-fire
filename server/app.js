@@ -22,10 +22,21 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use("/api/posts", postsRoutes);
-// app.use("/api/user", userRoutes);
+app.get('/dividend/:ticker', (req, res, next) => {
+  const APIKey = 'XFHHFVZVB33KDIM6'
+  request(
+    { url: `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${req.params.ticker}&apikey=${APIKey}` },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
 
-app.get('/stock/:ticker', (req, res, next) => {
+      res.status(200).json(JSON.parse(body));
+    }
+  )
+});
+
+app.get('/price/:ticker', (req, res, next) => {
   const APIKey = '7bddb22f28d4688052e6f6f0191a60d9ae193973';
   request(
     { url: `https://api.tiingo.com/tiingo/daily/${req.params.ticker}/prices?token=${APIKey}` },

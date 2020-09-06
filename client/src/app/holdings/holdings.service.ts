@@ -34,18 +34,15 @@ export class HoldingsService {
   }
 
   public getStockInfo(ticker: string) {
-    const APIKey = 'XFHHFVZVB33KDIM6'
-    const companyOverview = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${APIKey}`
-    const stockPrice = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&outputsize=compat&apikey=${APIKey}`
-    this.http.get(companyOverview).subscribe(res => {
+    const dividend = `http://localhost:3000/dividend/${ticker}`;
+    this.http.get(dividend).subscribe(res => {
       const found = this.holdings.find(e => e.ticker == ticker);
       found.dividendyield = res.DividendYield
-    })
+    },
+    err => console.log('HTTP Error', err))
 
-    // const APIKey2 = '7bddb22f28d4688052e6f6f0191a60d9ae193973'
-    // const stockPrice2 = `https://api.tiingo.com/tiingo/daily/${ticker}/prices?token=${APIKey2}`
-    const stockPrice2 = `http://localhost:3000/stock/${ticker}`;
-    this.http.get(stockPrice2).subscribe(res => {
+    const price = `http://localhost:3000/price/${ticker}`;
+    this.http.get(price).subscribe(res => {
       const found = this.holdings.find(e => e.ticker == ticker);
       found.price = res[0]['close']
       found.totalvalue = found.shares*found.price
