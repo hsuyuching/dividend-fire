@@ -17,10 +17,12 @@ export class HoldingsService {
   ];
 
   public getHoldings(): Holdings[] {
+    console.log("*", this.holdings)
     return this.holdings;
   }
 
   public getHoldingsNumber(): number {
     return this.holdings.length;
   }
+
 }
